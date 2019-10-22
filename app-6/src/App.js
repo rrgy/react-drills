@@ -1,42 +1,26 @@
-import React ,{Component} from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Todo from './todo.js'
 
-export default class App extends Component{
-  constructor(){
-    super()
-    this.state = {
-      list: [],
-      input: ''
-    }
-    this.addTask = this.addTask.bind(this)
-    
+const App = () => {
+  const [list, setList] = useState([])
+  const [input, setInput] = useState('')
+  const newList = () => {
+    list.push(input)
+    setInput('')
   }
-  handleChange(value){
-    this.setState({input: value})
-  }
-  addTask(){
-    this.setState({
-      list:[...this.state.list, this.state.input],
-      input: ''
-    })
-  }
-  render(){
-    let list = this.state.list.map((element,i) =>{
-      return <Todo key={i} task={element} />
-    })
-    return(
+  const listItems = list.map((element, index) => {
+    return <Todo key={index} element={element} />
+  })
+  return (
     <div>
-      <h1>To-Do List:</h1>
+      <h1>My to-do list:</h1>
       <div>
-        <input 
-          value={this.state.input} 
-          placeholder='Enter New Task' 
-          onChange={(e) => this.handleChange(e.target.value)}/>
-        <button onClick={this.addTask}>Add</button> 
+        <input onChange={e => setInput(e.target.value)} placeholder='Enter new task' value={input} />
+        <button onClick={newList}>Add</button>
       </div>
-      {list}
+      {listItems}
     </div>
-    )
-  }
+  )
 }
+export default App
