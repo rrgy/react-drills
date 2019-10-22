@@ -1,15 +1,8 @@
-import React,{Component} from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Login from './login'
 
-export default class App extends Component{
-  
-  
-  render(){
-    return(
-      <div className='app'>
-        <Login />
-      </div>)
-    
-  }
+const App = () => {
+  return (<Login />)
 }
+export default App
