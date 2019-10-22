@@ -1,24 +1,14 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { useState } from 'react'
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      text: ''
-    }
-  }
-  typedText(e){
-    this.setState({text: e.target.value})
-  }
-  render() {
-    return (
-      <div className="App">
-        <input onChange = {e =>this.typedText(e)} type='text'/>
-        <p>{this.state.text}</p>
-      </div>
-    );
-  }
+const App = () => {
+  const [text, setText] = useState('')
+  console.log(text)
+  return (
+    <div>
+      <input onChange={(e) => setText(e.target.value)} value={text}></input>
+      <p>{text}</p>
+    </div>
+  )
 }
 
-export default App;
+export default App
