@@ -1,19 +1,18 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      foods: ['Pizza', 'Burrito', 'Steak', 'Orange']
-    }
-  }
-  render() {
-    let foodsToDisplay = this.state.foods.map((element,index)=>{
-      return <h2 key={index}>{element}</h2>
-    })
-    return <div className='App'>{foodsToDisplay}</div>
-  }
+const App = () => {
+  const [list, setList] = useState(['apple', 'orange'])
+
+  let foods = list.map((element, index) => {
+    return <h2 key={index}>{element}</h2>
+  })
+
+  return (
+    <div>
+      {foods}
+    </div>
+  )
 }
 
 export default App;
